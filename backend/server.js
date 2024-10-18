@@ -1,29 +1,35 @@
-const express = require('express');
-const mongoose = require('mongoose');
-const todoRoutes = require('./routes/todoRoutes');
-require('dotenv').config();
-
-
+const express = require("express");
+const mongoose = require("mongoose");
+const todoRoutes = require("./routes/todoRoutes");
+require("dotenv").config();
+const PORT = process.env.PORT || 5000;
+const cors = require("cors");
 
 const app = express();
-app.get("/",(req,res)=>{
-    res.send("It is a todoapp Backend service - /todos to acess the todos json datas")
-})
-const PORT = process.env.PORT || 5000;
-const cors = require('cors');
-app.use(cors());
+
+app.use(
+  cors({
+    origin: ["https://todoapp-olive-phi.vercel.app/"],
+    methods: ["POST", "GET"],
+    credentials: true,
+  })
+);
 // Middleware
 app.use(express.json());
-app.use('/todos', todoRoutes);
+app.use("/todos", todoRoutes);
+
+app.get("/", (req, res) => {
+  res.send(
+    "It is a todoapp Backend service - /todos to acess the todos json datas"
+  );
+});
 
 // Connect to MongoDB
-mongoose.connect(process.env.MONGODB_URI)
-    .then(() => {
-        console.log('Connected to MongoDB');
-        app.listen(PORT, () => {
-            console.log(`Server running on port ${PORT}`);
-        });
-    })
-    .catch((error) => {
-        console.error('MongoDB connection error:', error);
-    });
+mongoose
+  .connect(process.env.MONGODB_URI)
+  .then(() => {
+    console.log("Connected to MongoDB");
+  })
+  .catch((error) => {
+    console.error("MongoDB connection error:", error);
+  });
