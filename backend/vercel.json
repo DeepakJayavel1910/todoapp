@@ -7,5 +7,5 @@
       "dest": "index.js"
     }
   ],
-  "rewrites": [{ "src": "/(.*)", "dest": "/" }]
+  "rewrites": [{ "source": "/todos/(.*)", "destination": "index.js" }]
 }
