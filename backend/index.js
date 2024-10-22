@@ -24,14 +24,6 @@ app.get("/", (req, res) => {
   );
 });
 
-app.get("/test", (req, res, next) => {
-  try {
-    res.send("it is a test route");
-  } catch (error) {
-    next(error);
-  }
-});
-
 // Connect to MongoDB
 mongoose
   .connect(process.env.MONGODB_URI)
