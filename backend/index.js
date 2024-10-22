@@ -24,10 +24,12 @@ app.get("/", (req, res) => {
   );
 });
 
-app.get("/test", (req, res) => {
-  res.send(
-    "it is a test route"
-  );
+app.get("/test", (req, res, next) => {
+  try {
+    res.send("it is a test route");
+  } catch (error) {
+    next(error);
+  }
 });
 
 // Connect to MongoDB
@@ -40,4 +42,4 @@ mongoose
     console.error("MongoDB connection error:", error);
   });
 
-module.exports = app
+module.exports = app;
