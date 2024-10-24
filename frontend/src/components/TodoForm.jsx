@@ -18,7 +18,7 @@ const TodoForm = ({ addTodo }) => {
               value={text}
               onChange={(e) => setText(e.target.value)}
               placeholder="Add a new todo"
-              className="flex-grow p-4 border border-gray-300 rounded-l-md focus:outline-none focus:ring-2 focus:ring-green-500"
+              className="flex-grow p-4 border border-gray-300 rounded-l-md "
           />
           <button type="submit" className="bg-green-500 text-white p-4 rounded-r-md hover:bg-green-600 transition duration-200">
               Add
