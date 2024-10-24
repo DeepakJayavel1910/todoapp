@@ -4,11 +4,13 @@ import TodoForm from './components/TodoForm';
 import TodoList from './components/TodoList';
 const apiUrl = import.meta.env.APIURL;
 
+
 const App = () => {
     const [todos, setTodos] = useState([]);
+    
     useEffect(() => {
         const fetchTodos = async () => {
-            const response = await axios.get(`${apiUrl}/todos`);
+            const response = await axios.get("https://todoapp-backend-wdul.onrender.com/todos");
             setTodos(response.data);
         };
         fetchTodos();
