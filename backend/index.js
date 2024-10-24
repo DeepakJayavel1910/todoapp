@@ -7,13 +7,25 @@ const cors = require("cors");
 
 const app = express();
 
-app.use(
-  cors({
-    origin: ["https://todoapp-olive-phi.vercel.app","https://localhost/5173"],
-    methods: ["POST", "GET"],
-    credentials: true,
-  })
-);
+const allowedOrigins = [
+  'http://localhost:5173',
+  'https://todoapp-backend-wdul.onrender.com',
+];
+
+app.use(cors({
+  origin: function (origin, callback) {
+      if (!origin) return callback(null, true);
+      if (allowedOrigins.indexOf(origin) !== -1) {
+          callback(null, true);
+      } else {
+          callback(new Error('Not allowed by CORS'));
+      }
+  },
+  methods: ["POST", "GET"],
+  credentials: true,
+}));
+
+
 // Middleware
 app.use(express.json());
 app.use("/todos", todoRoutes);
