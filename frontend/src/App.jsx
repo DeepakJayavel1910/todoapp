@@ -8,7 +8,7 @@ const App = () => {
     const [todos, setTodos] = useState([]);
     useEffect(() => {
         const fetchTodos = async () => {
-            const response = await axios.get(`${apiUrl}`);
+            const response = await axios.get(`${apiUrl}/todos`);
             setTodos(response.data);
         };
         fetchTodos();
