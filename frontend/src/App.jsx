@@ -10,7 +10,7 @@ const App = () => {
     
     useEffect(() => {
         const fetchTodos = async () => {
-            const response = await axios.get("https://todoapp-backend-wdul.onrender.com/todos");
+            const response = await axios.get(`${apiUrl}/todos`);
             setTodos(response.data);
         };
         fetchTodos();

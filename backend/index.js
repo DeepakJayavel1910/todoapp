@@ -9,7 +9,7 @@ const app = express();
 
 app.use(
   cors({
-    origin: ["https://todoapp-olive-phi.vercel.app"],
+    origin: ["https://todoapp-olive-phi.vercel.app","https://localhost/5173"],
     methods: ["POST", "GET"],
     credentials: true,
   })
