@@ -46,7 +46,7 @@ const App = () => {
     };
 
     return (
-      <div className="min-h-screen flex items-center justify-center">
+      <div className="min-h-screen bg-[#f4f4f4] flex items-center justify-center">
           <div className="bg-white rounded-lg shadow-lg p-8 w-full max-w-md">
               <h1 className="text-3xl font-bold mb-6 text-center text-black">Todo App</h1>
               <TodoForm addTodo={addTodo} />
